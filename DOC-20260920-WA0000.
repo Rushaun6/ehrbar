@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Ehrbar — simple game top-ups and gift cards in Jamaica." />
+  <title>Ehrbar | Game Top-Ups Jamaica</title>
+  <style>
+    :root{
+      --bg:#f7f8fa;
+      --card:#ffffff;
+      --text:#111827;
+      --muted:#6b7280;
+      --line:#e5e7eb;
+      --brand:#14532d;
+      --brand2:#16a34a;
+      --soft:#ecfdf3;
+      --shadow:0 12px 35px rgba(17,24,39,.07);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(1120px,92%);margin:auto}
+    header{
+      position:sticky;top:0;z-index:20;
+      background:rgba(255,255,255,.92);
+      border-bottom:1px solid var(--line);
+      backdrop-filter:blur(12px);
+    }
+    nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{font-size:1.45rem;font-weight:850;letter-spacing:-.04em}
+    .brand span{color:var(--brand2)}
+    .navlinks{display:flex;gap:24px;align-items:center;font-size:.95rem;color:#374151}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      padding:12px 18px;border-radius:12px;font-weight:750;
+      border:1px solid transparent;transition:.18s ease;
+    }
+    .btn.primary{background:var(--brand);color:white}
+    .btn.primary:hover{background:#0f4425;transform:translateY(-1px)}
+    .btn.secondary{background:white;border-color:var(--line)}
+    .btn.secondary:hover{border-color:#cbd5e1}
+    .hero{padding:82px 0 58px}
+    .hero-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:48px;align-items:center}
+    .eyebrow{
+      display:inline-block;padding:7px 11px;border-radius:999px;
+      background:var(--soft);color:var(--brand);font-weight:750;font-size:.82rem;
+    }
+    h1{font-size:clamp(2.7rem,6vw,5.1rem);line-height:.98;letter-spacing:-.065em;margin:18px 0}
+    .lead{font-size:1.1rem;color:var(--muted);max-width:660px}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+    .trust{display:flex;gap:22px;flex-wrap:wrap;margin-top:28px;color:#4b5563;font-size:.9rem}
+    .hero-card{
+      background:linear-gradient(145deg,#fff,#f0fdf4);
+      border:1px solid #d1fae5;border-radius:26px;padding:28px;box-shadow:var(--shadow)
+    }
+    .hero-card h3{margin:0 0 8px;font-size:1.35rem}
+    .mini{color:var(--muted);font-size:.94rem}
+    .price-example{margin-top:22px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px}
+    .price-row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px dashed var(--line)}
+    .price-row:last-child{border-bottom:0}
+    section{padding:66px 0}
+    .section-title{font-size:2rem;letter-spacing:-.04em;margin:0 0 8px}
+    .section-sub{color:var(--muted);margin:0 0 30px}
+    .games{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .game{
+      background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+      padding:22px;box-shadow:0 7px 25px rgba(17,24,39,.035)
+    }
+    .game .icon{
+      width:46px;height:46px;border-radius:13px;background:var(--soft);
+      display:grid;place-items:center;font-size:1.35rem;margin-bottom:18px
+    }
+    .game h3{margin:0 0 6px;font-size:1.05rem}
+    .game p{margin:0;color:var(--muted);font-size:.9rem}
+    .pricing{
+      background:#111827;color:white
+    }
+    .pricing .section-sub{color:#9ca3af}
+    .tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .tier{
+      background:#18202d;border:1px solid #273244;border-radius:18px;padding:22px
+    }
+    .tier .amount{font-size:1.5rem;font-weight:850;margin:8px 0}
+    .tier .mark{color:#86efac;font-weight:850;font-size:1.1rem}
+    .note{margin-top:18px;color:#9ca3af;font-size:.9rem}
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .step{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px}
+    .num{width:34px;height:34px;border-radius:50%;background:var(--brand);color:#fff;display:grid;place-items:center;font-weight:850;margin-bottom:16px}
+    .contact{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+    .contact-card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:28px;box-shadow:var(--shadow)}
+    .contact-links{display:flex;flex-direction:column;gap:12px;margin-top:20px}
+    .contact-link{border:1px solid var(--line);border-radius:13px;padding:14px 16px;font-weight:700}
+    .contact-link:hover{border-color:#9ca3af}
+    .game details{margin-top:16px;border-top:1px solid var(--line);padding-top:14px}
+    .game summary{cursor:pointer;font-weight:800;color:var(--brand);list-style:none}
+    .game summary::-webkit-details-marker{display:none}
+    .game summary::after{content:"+";float:right}
+    .game details[open] summary::after{content:"−"}
+    .options{margin-top:12px;display:grid;gap:9px}
+    .option{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;background:#f9fafb;border:1px solid var(--line);border-radius:12px;padding:11px 12px}
+    .option small{display:block;color:var(--muted);font-weight:500;margin-top:2px}
+    .option strong{white-space:nowrap}
+    .rate-box{margin-top:22px;padding:16px 18px;background:#fff;border:1px solid var(--line);border-radius:14px;color:#374151;font-size:.92rem}
+    .reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}
+    .review{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px}
+    .review .stars{letter-spacing:2px;margin-bottom:9px}
+    .sample-tag{display:inline-block;font-size:.72rem;font-weight:800;padding:4px 8px;border-radius:999px;background:#f3f4f6;color:#6b7280;margin-bottom:10px}
+    .review-form{margin-top:24px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px}
+    .field{display:grid;gap:7px;margin-bottom:14px}
+    .field label{font-weight:750;font-size:.9rem}
+    .field input,.field select,.field textarea{width:100%;font:inherit;border:1px solid #d1d5db;border-radius:11px;padding:11px 12px;background:#fff}
+    .field textarea{min-height:105px;resize:vertical}
+    footer{padding:32px 0;border-top:1px solid var(--line);color:var(--muted);font-size:.88rem}
+    .footer-row{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+    @media (max-width:850px){
+      .navlinks a:not(.nav-cta){display:none}
+      .hero-grid,.contact{grid-template-columns:1fr}
+      .games{grid-template-columns:repeat(2,1fr)}
+      .reviews-grid{grid-template-columns:1fr}
+      .tiers,.steps{grid-template-columns:repeat(2,1fr)}
+      .hero{padding-top:56px}
+    }
+    @media (max-width:560px){
+      .games,.tiers,.steps{grid-template-columns:1fr}
+      nav{height:64px}
+      h1{font-size:3rem}
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <nav>
+      <a class="brand" href="#">Ehr<span>bar</span></a>
+      <div class="navlinks">
+        <a href="#games">Games</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#how">How it works</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact</a>
+        <a class="btn primary nav-cta" href="https://wa.me/18764526429?text=Hi%20Ehrbar%2C%20I%20want%20to%20make%20a%20top-up." target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">GAME TOP-UPS • JAMAICA</span>
+        <h1>Top up without the hassle.</h1>
+        <p class="lead">Game top-ups and gift cards with simple local ordering. Choose what you want, message Ehrbar, confirm your price, and complete your order.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="https://wa.me/18764526429?text=Hi%20Ehrbar%2C%20I%20want%20to%20make%20a%20top-up." target="_blank" rel="noopener">Order on WhatsApp</a>
+          <a class="btn secondary" href="#games">Browse games</a>
+        </div>
+        <div class="trust">
+          <span>✓ Clear pricing</span>
+          <span>✓ Simple ordering</span>
+          <span>✓ Bigger orders, lower markup</span>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <h3>Fair markup, not crazy prices.</h3>
+        <p class="mini">Markup gets smaller as the order gets larger.</p>
+        <div class="price-example">
+          <div class="price-row"><span>Your total cost: J$1,000</span><strong>Example: J$1,150</strong></div>
+          <div class="price-row"><span>Your total cost: J$2,000</span><strong>Example: J$2,240</strong></div>
+          <div class="price-row"><span>Your total cost: J$5,000</span><strong>Example: J$5,500</strong></div>
+          <div class="price-row"><span>Your total cost: J$10,000</span><strong>Example: J$10,800</strong></div>
+        </div>
+        <p class="mini" style="margin-top:14px">Final prices can change with exchange rates and platform fees. You confirm the price before paying.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="games">
+    <div class="wrap">
+      <h2 class="section-title">What you can order</h2>
+      <p class="section-sub">Start with the main services below. More can be added later.</p>
+      <div class="games">
+        <div class="game"><div class="icon">◈</div><h3>Roblox</h3><p>Robux purchased through supported Roblox options.</p>
+          <details><summary>View amounts & prices</summary><div class="options">
+            <div class="option"><span><b>400 Robux</b><small>US$4.99 ≈ J$790 base</small></span><strong>≈ J$900</strong></div>
+            <div class="option"><span><b>800 Robux</b><small>US$9.99 ≈ J$1,580 base</small></span><strong>≈ J$1,750</strong></div>
+            <div class="option"><span><b>1,700 Robux</b><small>US$19.99 ≈ J$3,160 base</small></span><strong>≈ J$3,500</strong></div>
+            <div class="option"><span><b>4,500 Robux</b><small>US$49.99 ≈ J$7,900 base</small></span><strong>≈ J$8,550</strong></div>
+          </div></details></div>
+        <div class="game"><div class="icon">🔥</div><h3>Free Fire</h3><p>Diamond top-ups. Exact diamond bundles can vary by supplier/region.</p>
+          <details><summary>View example budgets</summary><div class="options">
+            <div class="option"><span><b>US$1 budget</b><small>≈ J$158 base</small></span><strong>≈ J$200</strong></div>
+            <div class="option"><span><b>US$5 budget</b><small>≈ J$790 base</small></span><strong>≈ J$900</strong></div>
+            <div class="option"><span><b>US$10 budget</b><small>≈ J$1,580 base</small></span><strong>≈ J$1,750</strong></div>
+            <div class="option"><span><b>US$20 budget</b><small>≈ J$3,160 base</small></span><strong>≈ J$3,500</strong></div>
+          </div><p class="mini" style="margin-top:10px">Message first to confirm how many diamonds your region gets for the amount.</p></details></div>
+        <div class="game"><div class="icon">◉</div><h3>Steam</h3><p>Steam Wallet digital gift-card values.</p>
+          <details><summary>View amounts & prices</summary><div class="options">
+            <div class="option"><span><b>US$5</b><small>≈ J$790 base</small></span><strong>≈ J$900</strong></div>
+            <div class="option"><span><b>US$10</b><small>≈ J$1,580 base</small></span><strong>≈ J$1,750</strong></div>
+            <div class="option"><span><b>US$25</b><small>≈ J$3,950 base</small></span><strong>≈ J$4,350</strong></div>
+            <div class="option"><span><b>US$50</b><small>≈ J$7,900 base</small></span><strong>≈ J$8,550</strong></div>
+          </div></details></div>
+        <div class="game"><div class="icon">△</div><h3>PlayStation</h3><p>PlayStation Store gift cards. Account region must match the voucher region.</p>
+          <details><summary>View amounts & prices</summary><div class="options">
+            <div class="option"><span><b>US$10</b><small>≈ J$1,580 base</small></span><strong>≈ J$1,750</strong></div>
+            <div class="option"><span><b>US$25</b><small>≈ J$3,950 base</small></span><strong>≈ J$4,350</strong></div>
+            <div class="option"><span><b>US$50</b><small>≈ J$7,900 base</small></span><strong>≈ J$8,550</strong></div>
+            <div class="option"><span><b>US$100</b><small>≈ J$15,800 base</small></span><strong>≈ J$17,050</strong></div>
+          </div></details></div>
+        <div class="game"><div class="icon">X</div><h3>Xbox</h3><p>Xbox/Microsoft gift-card values. Region compatibility is confirmed first.</p>
+          <details><summary>View amounts & prices</summary><div class="options">
+            <div class="option"><span><b>US$10</b><small>≈ J$1,580 base</small></span><strong>≈ J$1,750</strong></div>
+            <div class="option"><span><b>US$25</b><small>≈ J$3,950 base</small></span><strong>≈ J$4,350</strong></div>
+            <div class="option"><span><b>US$50</b><small>≈ J$7,900 base</small></span><strong>≈ J$8,550</strong></div>
+            <div class="option"><span><b>US$100</b><small>≈ J$15,800 base</small></span><strong>≈ J$17,050</strong></div>
+          </div></details></div>
+        <div class="game"><div class="icon">🛍</div><h3>Temu / Shopping</h3><p>Message to check what supported payment or gift-card option is available.</p>
+          <details><summary>View example budgets</summary><div class="options">
+            <div class="option"><span><b>US$10 purchase</b><small>≈ J$1,580 base</small></span><strong>≈ J$1,750</strong></div>
+            <div class="option"><span><b>US$25 purchase</b><small>≈ J$3,950 base</small></span><strong>≈ J$4,350</strong></div>
+            <div class="option"><span><b>US$50 purchase</b><small>≈ J$7,900 base</small></span><strong>≈ J$8,550</strong></div>
+            <div class="option"><span><b>US$100 purchase</b><small>≈ J$15,800 base</small></span><strong>≈ J$17,050</strong></div>
+          </div><p class="mini" style="margin-top:10px">Availability depends on the checkout/payment method; final total is confirmed before payment.</p></details></div>
+      </div>
+      <div class="rate-box"><strong>Conversion used for examples:</strong> US$1 ≈ J$158. Prices are estimates and already include the tiered Ehrbar markup shown below. Exchange rates, taxes, platform prices and card/supplier fees can change, so the final price is always confirmed before you pay.</div>
+    </div>
+  </section>
+
+  <section class="pricing" id="pricing">
+    <div class="wrap">
+      <h2 class="section-title">Simple pricing</h2>
+      <p class="section-sub">The percentage is added after the actual product cost, conversion, and unavoidable purchase fees.</p>
+      <div class="tiers">
+        <div class="tier"><div>Orders up to</div><div class="amount">J$1,000</div><div class="mark">+15%</div></div>
+        <div class="tier"><div>J$1,001 –</div><div class="amount">J$2,500</div><div class="mark">+12%</div></div>
+        <div class="tier"><div>J$2,501 –</div><div class="amount">J$5,000</div><div class="mark">+10%</div></div>
+        <div class="tier"><div>Over</div><div class="amount">J$5,000</div><div class="mark">+8%</div></div>
+      </div>
+      <p class="note">Prices should be rounded to a convenient amount, such as the nearest J$50. Always send the customer the final total before accepting payment.</p>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="wrap">
+      <h2 class="section-title">How it works</h2>
+      <p class="section-sub">Four straightforward steps.</p>
+      <div class="steps">
+        <div class="step"><div class="num">1</div><strong>Choose</strong><p class="mini">Pick the game, gift card, or top-up you want.</p></div>
+        <div class="step"><div class="num">2</div><strong>Message</strong><p class="mini">Send the item and amount through WhatsApp or Instagram.</p></div>
+        <div class="step"><div class="num">3</div><strong>Confirm</strong><p class="mini">Get the exact JMD total and payment instructions.</p></div>
+        <div class="step"><div class="num">4</div><strong>Receive</strong><p class="mini">After payment is confirmed, your order is completed.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="reviews">
+    <div class="wrap">
+      <h2 class="section-title">Customer reviews</h2>
+      <p class="section-sub">This section is ready for real customer feedback. The cards below are clearly marked examples for the site layout.</p>
+      <div class="reviews-grid">
+        <div class="review"><span class="sample-tag">SAMPLE REVIEW</span><div class="stars">★★★★★</div><strong>“Quick and straightforward.”</strong><p class="mini">Example text: “Messaged what I wanted, got the total, paid and received it without confusion.”</p><small>— Sample customer</small></div>
+        <div class="review"><span class="sample-tag">SAMPLE REVIEW</span><div class="stars">★★★★★</div><strong>“Price was clear before I paid.”</strong><p class="mini">Example text: “I liked seeing the JMD total first so I knew exactly what I was paying.”</p><small>— Sample customer</small></div>
+        <div class="review"><span class="sample-tag">SAMPLE REVIEW</span><div class="stars">★★★★☆</div><strong>“Easy to order.”</strong><p class="mini">Example text: “The WhatsApp ordering process was simple and I got help choosing the right region.”</p><small>— Sample customer</small></div>
+      </div>
+      <div class="review-form">
+        <h3 style="margin-top:0">Leave a review</h3>
+        <p class="mini">Preview form only — it does not submit anywhere yet.</p>
+        <div class="field"><label>Name</label><input type="text" placeholder="Your name"></div>
+        <div class="field"><label>Rating</label><select><option>5 stars</option><option>4 stars</option><option>3 stars</option><option>2 stars</option><option>1 star</option></select></div>
+        <div class="field"><label>Review</label><textarea placeholder="How was your order?"></textarea></div>
+        <button class="btn primary" type="button" onclick="alert('Review form demo only — submissions are not enabled yet.')">Submit review</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap contact">
+      <div class="contact-card">
+        <span class="eyebrow">CONTACT</span>
+        <h2 class="section-title" style="margin-top:14px">Ready to order?</h2>
+        <p class="section-sub">Message with the game, amount, and what you want to buy.</p>
+        <div class="contact-links">
+          <a class="contact-link" href="https://wa.me/18764526429?text=Hi%20Ehrbar%2C%20I%20want%20to%20make%20a%20top-up." target="_blank" rel="noopener">WhatsApp: +1 (876) 452-6429</a>
+          <a class="contact-link" href="https://www.instagram.com/rushaun227/" target="_blank" rel="noopener">Instagram: @rushaun227</a>
+        </div>
+      </div>
+      <div class="contact-card">
+        <h3 style="margin-top:0">Before you pay</h3>
+        <p class="mini">Confirm the exact item, region/account requirements, and final price first. Never send passwords, card details, or login codes.</p>
+        <p class="mini"><strong>Tip:</strong> A separate business email and business contact number are safer for a public website than personal contact details.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-row">
+    <div><strong>Ehrbar</strong> — Game top-ups & gift cards</div>
+    <div>Jamaica • Prices confirmed before payment</div>
+  </div>
+</footer>
+</body>
+</html>
